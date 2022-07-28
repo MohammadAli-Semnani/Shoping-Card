@@ -3,6 +3,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 //components
 import Store from "./shared/Store";
 import ProductsDatails from "./shared/ProductsDatails";
+import Navbar from "./shared/Navbar";
 
 //context
 import ProductsContextProvider from "./Context/ProductsContextProvider";
@@ -12,6 +13,7 @@ const App = () => {
   return (
     <ProductsContextProvider>
       <CartContextProvider>
+        <Navbar/>
         <Routes>
           <Route path="/products/:id" element={<ProductsDatails />} />
           <Route path="/products" element={<Store />} />
