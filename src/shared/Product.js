@@ -24,14 +24,14 @@ const {state, dispatch} = useContext(CardContext)
         </Link>
         <div>
           {
-            isInCard(state, productData.id) ? <button onClick={() => dispatch({ type: "INCREASE", payload: productData })}>+</button> :
-              <button onClick={()=> dispatch({ type: "ADD_ITEM", payload: productData })}>ADD ITEM</button>
-          }
-          {
             countQuantity(state,productData.id) === 1 && <button onClick={()=> dispatch({type:"REMOVE", payload:productData})} ><img src={trashIcon} alt="icone" /></button>
           }
           {
             countQuantity(state,productData.id) > 1 && <button onClick={()=> dispatch({type:"DECREASE", payload:productData})} >-</button>
+          }
+          {
+            isInCard(state, productData.id) ? <button onClick={() => dispatch({ type: "INCREASE", payload: productData })}>+</button> :
+              <button onClick={()=> dispatch({ type: "ADD_ITEM", payload: productData })}>ADD ITEM</button>
           }
         </div>
       </div>

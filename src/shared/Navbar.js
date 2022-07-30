@@ -2,16 +2,17 @@ import React, { useContext } from 'react';
 import { CardContext } from '../Context/CartContextProvider';
 
 //Icons
-import shopIcon from "../assets/shopIcon.svg"
+import shopIcon from "../assets/shopIcon.svg";
 import { Link } from 'react-router-dom';
 //Context
 const Navbar = () => {
     const {state} = useContext(CardContext)
     return (
       <div>
+        <Link to="/products">Products</Link>
         <div>
-          <Link to="/products">
-            <img alt='icon' src={shopIcon} style={{ width: "20px" }} />
+          <Link to="/cart">
+            <img alt="icon" src={shopIcon} style={{ width: "20px" }} />
           </Link>
 
           <span>{state.itemCounter}</span>

@@ -23,7 +23,8 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         selectedItem: [...state.selectedItem],
-        ...sumItems(state.selectedItem)
+        ...sumItems(state.selectedItem),
+        checkout: false,
       };
     case "REMOVE":
       const newSelecteditem = state.selectedItem.filter(
