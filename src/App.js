@@ -5,7 +5,6 @@ import Store from "./shared/Store";
 import ProductsDatails from "./shared/ProductsDatails";
 import Navbar from "./shared/Navbar";
 import ShopCarts from "./shared/ShopCarts";
-// import Cart from "./shared/Cart";
 
 //context
 import ProductsContextProvider from "./Context/ProductsContextProvider";

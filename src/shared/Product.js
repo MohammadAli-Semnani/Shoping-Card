@@ -7,30 +7,28 @@ import { Link } from "react-router-dom";
 
 //context
 import { CardContext } from "../Context/CartContextProvider";
-
+//css
+import styles from "./Product.module.css"
 //Icons
 import trashIcon from "../../src/assets/trash.svg";
 
 const Product = ({ productData }) => {
-const {state, dispatch} = useContext(CardContext)
+  const { state, dispatch } = useContext(CardContext)
+  
   return (
-    <div>
-      <img alt="Product" src={productData.image} style={{ width: "200px" }} />
+    <div className={styles.container}>
+      <img className={styles.cardImage} alt="Product" src={productData.image} style={{ width: "200px" }} />
       <h3>{shorten(productData.title)}</h3>
       <p>{productData.price}</p>
-      <div>
-        <Link to={`/products/${productData.id}`}>
-          Details{productData.Details}
-        </Link>
-        <div>
-          {
-            countQuantity(state,productData.id) === 1 && <button onClick={()=> dispatch({type:"REMOVE", payload:productData})} ><img src={trashIcon} alt="icone" /></button>
-          }
-          {
-            countQuantity(state,productData.id) > 1 && <button onClick={()=> dispatch({type:"DECREASE", payload:productData})} >-</button>
-          }
-          {
-            isInCard(state, productData.id) ? <button onClick={() => dispatch({ type: "INCREASE", payload: productData })}>+</button> :
+      <div className={styles.linkContainer}>
+        <Link to={`/products/${productData.id}`}>Details{productData.Details}</Link>
+        <div className={styles.buttonContainer}>
+
+          {countQuantity(state,productData.id) === 1 && <button className={styles.smallButton}  onClick={()=> dispatch({type:"REMOVE", payload:productData})} ><img src={trashIcon} alt="icone" /></button>}
+          {countQuantity(state,productData.id) > 1 && <button className={styles.smallButton} onClick={()=> dispatch({type:"DECREASE", payload:productData})} >-</button>}
+          {countQuantity(state, productData.id) > 0 && <span className={styles.counter}>{ countQuantity(state, productData.id)}</span>}
+
+          {isInCard(state, productData.id) ? <button className={styles.smallButton} onClick={() => dispatch({ type: "INCREASE", payload: productData })}>+</button> :
               <button onClick={()=> dispatch({ type: "ADD_ITEM", payload: productData })}>ADD ITEM</button>
           }
         </div>

@@ -1,7 +1,9 @@
 import React, { useContext } from "react";
 import { Link, useParams } from "react-router-dom";
+//Context
 import { ProductsContext } from "../Context/ProductsContextProvider";
-
+//css
+import styles from "./ProductDetails.module.css";
 const ProductsDatails = () => {
   const params = useParams();
   const id = params.id;
@@ -9,14 +11,14 @@ const ProductsDatails = () => {
   const product = data[id - 1];
   const { image, title, description, price, category } = product;
   return (
-    <div>
-      <img src={image} alt="product" />
-      <div>
+    <div className={styles.container}>
+      <img className={styles.image} src={image} alt="product" />
+      <div className={styles.textContainer}>
         <h3>{title}</h3>
-        <p>{description}</p>
-        <p>{category}</p>
-        <div>
-          <span>{price}</span>
+        <p className={styles.description}> {description}</p>
+        <p className={styles.category}>{category}</p>
+        <div className={styles.buttonContainer}>
+          <span className={styles.price}>{price}</span>
           <Link to={"/products"}>Back To Shop</Link>
         </div>
       </div>
